@@ -15,6 +15,9 @@ import {
   Users,
   Menu,
   X,
+  Camera,
+  Palette,
+  Briefcase,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ContactForm } from "@/components/ContactForm"
@@ -30,7 +33,7 @@ export default function CinematicPortfolio() {
   const [isMounted, setIsMounted] = useState(false)
 
   const name = "LAKSHAY JAIN"
-  const subtitle = "Computer Science Student | Entrepreneur | Full Stack Developer"
+  const subtitle = "Computer Science Student | Entrepreneur | Designer | Photographer"
 
   const { trackEvent } = useAnalytics()
 
@@ -249,10 +252,14 @@ export default function CinematicPortfolio() {
               {/* Social Links */}
               <div className="flex justify-center space-x-8">
                 {[
-                  { icon: Linkedin, href: "https://linkedin.com/in/lakshayjain", color: "hover:text-blue-400" },
-                  { icon: Github, href: "https://github.com/lakshayjain", color: "hover:text-gray-400" },
-                  { icon: Instagram, href: "https://instagram.com/lakshayjain", color: "hover:text-pink-400" },
-                  { icon: ExternalLink, href: "https://lakshayjain.dev", color: "hover:text-cyan-400" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/lakshay-jainn/", color: "hover:text-blue-400" },
+                  { icon: Github, href: "https://github.com/helodreamcumtrue", color: "hover:text-gray-400" },
+                  { icon: Instagram, href: "https://www.instagram.com/elemental_101/", color: "hover:text-pink-400" },
+                  {
+                    icon: ExternalLink,
+                    href: "https://sites.google.com/view/dreamycrafts56",
+                    color: "hover:text-cyan-400",
+                  },
                 ].map((social, index) => (
                   <a
                     key={index}
@@ -308,20 +315,22 @@ export default function CinematicPortfolio() {
               </h2>
 
               <p className="text-xl text-gray-300 leading-relaxed mb-8 font-body font-light">
-                I'm a passionate Computer Science student with an entrepreneurial spirit. Currently building innovative
-                solutions while mastering the art of code and design.
+                Motivated second-year Computer Science student with a strong passion for technology and
+                entrepreneurship. Skilled in design and photography with a keen interest in startup ecosystems and
+                innovation.
               </p>
 
               <p className="text-lg text-gray-400 leading-relaxed mb-12 font-light">
-                My mission is to bridge technology and creativity, creating impactful solutions that matter.
+                Seeking opportunities to apply technical knowledge and creative problem-solving skills in dynamic tech
+                environments. Eager to contribute to projects that blend technology with impactful solutions.
               </p>
 
               {/* Stats */}
               <div className="grid grid-cols-3 gap-8">
                 {[
-                  { number: "3+", label: "YEARS EXPERIENCE" },
-                  { number: "50+", label: "PROJECTS COMPLETED" },
-                  { number: "15+", label: "TECHNOLOGIES" },
+                  { number: "2024", label: "STARTED CS JOURNEY" },
+                  { number: "5+", label: "SOCIETIES ACTIVE" },
+                  { number: "1", label: "BUSINESS FOUNDED" },
                 ].map((stat, index) => (
                   <div key={index} className="text-center">
                     <div className="text-3xl font-black text-cyan-400 mb-2">{stat.number}</div>
@@ -346,30 +355,49 @@ export default function CinematicPortfolio() {
             <div className="space-y-24">
               {[
                 {
-                  title: "FULL STACK DEVELOPER",
-                  company: "Tech Startup",
-                  period: "2023 - Present",
+                  title: "FOUNDER",
+                  company: "Dreamy Crafts",
+                  period: "Present",
                   description:
-                    "Built and scaled web applications using modern technologies, serving thousands of users with high performance.",
-                  metrics: ["React/Next.js", "Node.js", "MongoDB", "AWS"],
+                    "Founded and operated a greeting card business, designing custom cards and managing e-commerce operations. Established retail partnerships and handle end-to-end business operations.",
+                  metrics: ["E-commerce", "Design", "Marketing", "Operations"],
                   side: "left",
+                  link: "https://sites.google.com/view/dreamycrafts56",
                 },
                 {
-                  title: "COMPUTER SCIENCE STUDENT",
-                  company: "University",
-                  period: "2022 - Present",
+                  title: "PRODUCT RESEARCHER",
+                  company: "Aarohan - Enactus Thapar",
+                  period: "2024 - Present",
                   description:
-                    "Pursuing Computer Science degree with focus on software engineering and entrepreneurship.",
-                  metrics: ["Data Structures", "Algorithms", "Software Engineering", "Machine Learning"],
+                    "Conducted comprehensive market research for PET bottle to 3D filament conversion technology. Analyzed material properties and competitive landscape in sustainable 3D printing.",
+                  metrics: ["Market Research", "Sustainability", "3D Printing", "Analysis"],
                   side: "right",
                 },
                 {
-                  title: "FREELANCE DEVELOPER",
-                  company: "Various Clients",
-                  period: "2021 - Present",
+                  title: "CORE TEAM MEMBER",
+                  company: "TED X TIET",
+                  period: "2024 - Present",
                   description:
-                    "Delivered custom web solutions for small businesses and startups, focusing on user experience and performance.",
-                  metrics: ["Web Development", "UI/UX Design", "Client Management", "Project Delivery"],
+                    "Contributed to event design and execution, handled creative design tasks for branding, and assisted in logistics and participant coordination.",
+                  metrics: ["Event Management", "Design", "Logistics", "Coordination"],
+                  side: "left",
+                },
+                {
+                  title: "TEAM MEMBER",
+                  company: "ACM Society",
+                  period: "2024 - Present",
+                  description:
+                    "Contributed to Ideathon & Eclipse flagship events, handled creative design for posters and branding, developed media strategies for campus visibility.",
+                  metrics: ["Event Design", "Media Strategy", "Branding", "Promotion"],
+                  side: "right",
+                },
+                {
+                  title: "PHOTOGRAPHER",
+                  company: "FAPS Society",
+                  period: "2024 - Present",
+                  description:
+                    "Created visual content for social media campaigns, organized photography walks and workshops, contributed to club's visual identity.",
+                  metrics: ["Photography", "Social Media", "Workshops", "Content Creation"],
                   side: "left",
                 },
               ].map((exp, index) => (
@@ -403,6 +431,20 @@ export default function CinematicPortfolio() {
                           </div>
                         ))}
                       </div>
+
+                      {exp.link && (
+                        <div className="mt-4">
+                          <a
+                            href={exp.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-cyan-400 hover:text-cyan-300 text-sm flex items-center gap-2"
+                          >
+                            <ExternalLink size={16} />
+                            Visit Website
+                          </a>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -431,11 +473,11 @@ export default function CinematicPortfolio() {
 
               <div className="space-y-6">
                 {[
-                  { skill: "JavaScript/TypeScript", level: 90 },
-                  { skill: "React/Next.js", level: 85 },
-                  { skill: "Python", level: 80 },
-                  { skill: "Node.js", level: 75 },
-                  { skill: "Database Design", level: 70 },
+                  { skill: "Adobe Photoshop", level: 90 },
+                  { skill: "Adobe Lightroom", level: 95 },
+                  { skill: "Adobe Illustrator", level: 85 },
+                  { skill: "Figma", level: 80 },
+                  { skill: "UI/UX Design", level: 75 },
                 ].map((item, index) => (
                   <div key={index} className="group">
                     <div className="flex justify-between mb-2">
@@ -461,16 +503,16 @@ export default function CinematicPortfolio() {
             >
               <h3 className="text-3xl font-bold mb-8 flex items-center">
                 <Users className="mr-4 text-cyan-400" size={32} />
-                LEADERSHIP
+                CREATIVE & LEADERSHIP
               </h3>
 
               <div className="space-y-6">
                 {[
-                  { skill: "Team Leadership", level: 95 },
-                  { skill: "Project Management", level: 90 },
-                  { skill: "Communication", level: 85 },
-                  { skill: "Problem Solving", level: 90 },
-                  { skill: "Strategic Thinking", level: 80 },
+                  { skill: "Photography", level: 95 },
+                  { skill: "Event Management", level: 90 },
+                  { skill: "Problem Solving", level: 85 },
+                  { skill: "Leadership Skills", level: 80 },
+                  { skill: "AI Prompting", level: 75 },
                 ].map((item, index) => (
                   <div key={index} className="group">
                     <div className="flex justify-between mb-2">
@@ -487,6 +529,52 @@ export default function CinematicPortfolio() {
                 ))}
               </div>
             </div>
+          </div>
+
+          {/* Skill Categories */}
+          <div className="mt-20 grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Camera,
+                title: "PHOTOGRAPHY",
+                skills: ["Adobe Lightroom", "Adobe Photoshop", "Snapseed", "Visual Content Creation"],
+                color: "from-blue-500 to-cyan-500",
+              },
+              {
+                icon: Palette,
+                title: "DESIGN",
+                skills: ["Adobe Illustrator", "Figma", "UI/UX Design", "Brand Identity"],
+                color: "from-purple-500 to-pink-500",
+              },
+              {
+                icon: Briefcase,
+                title: "BUSINESS",
+                skills: ["Event Management", "Leadership", "Problem Solving", "Entrepreneurship"],
+                color: "from-orange-500 to-red-500",
+              },
+            ].map((category, index) => (
+              <div
+                key={index}
+                className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-lg p-6 hover:border-cyan-400/50 transition-all duration-500 group"
+                style={{
+                  transform: isMounted ? `translateY(${scrollY * 0.01 * (index + 1)}px)` : "translateY(0px)",
+                }}
+              >
+                <div
+                  className={`w-16 h-16 rounded-lg bg-gradient-to-br ${category.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                >
+                  <category.icon className="text-white" size={28} />
+                </div>
+                <h4 className="text-xl font-bold mb-4 text-white">{category.title}</h4>
+                <div className="space-y-2">
+                  {category.skills.map((skill, i) => (
+                    <div key={i} className="text-gray-400 text-sm">
+                      • {skill}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -531,7 +619,7 @@ export default function CinematicPortfolio() {
                   icon: Phone,
                   title: "PHONE",
                   content: "+91 8690140158",
-                  subtitle: "Available Mon-Fri, 9AM-6PM",
+                  subtitle: "Available for calls and messages",
                   color: "text-purple-400",
                   bgGradient: "from-purple-500/10 to-pink-500/10",
                   borderGradient: "from-purple-500/30 to-pink-500/30",
@@ -539,9 +627,9 @@ export default function CinematicPortfolio() {
                 },
                 {
                   icon: MapPin,
-                  title: "LOCATION",
-                  content: "India",
-                  subtitle: "Open to remote opportunities",
+                  title: "EDUCATION",
+                  content: "Thapar Institute of Engineering & Technology",
+                  subtitle: "Computer Science & Engineering",
                   color: "text-emerald-400",
                   bgGradient: "from-emerald-500/10 to-green-500/10",
                   borderGradient: "from-emerald-500/30 to-green-500/30",
@@ -618,7 +706,7 @@ export default function CinematicPortfolio() {
                   {[
                     {
                       icon: Linkedin,
-                      href: "https://linkedin.com/in/lakshayjain",
+                      href: "https://www.linkedin.com/in/lakshay-jainn/",
                       color: "hover:text-blue-400",
                       bgColor: "hover:bg-blue-500/10",
                       borderColor: "hover:border-blue-400/50",
@@ -626,7 +714,7 @@ export default function CinematicPortfolio() {
                     },
                     {
                       icon: Github,
-                      href: "https://github.com/lakshayjain",
+                      href: "https://github.com/helodreamcumtrue",
                       color: "hover:text-gray-300",
                       bgColor: "hover:bg-gray-500/10",
                       borderColor: "hover:border-gray-400/50",
@@ -634,7 +722,7 @@ export default function CinematicPortfolio() {
                     },
                     {
                       icon: Instagram,
-                      href: "https://instagram.com/lakshayjain",
+                      href: "https://www.instagram.com/elemental_101/",
                       color: "hover:text-pink-400",
                       bgColor: "hover:bg-pink-500/10",
                       borderColor: "hover:border-pink-400/50",
@@ -642,11 +730,11 @@ export default function CinematicPortfolio() {
                     },
                     {
                       icon: ExternalLink,
-                      href: "https://lakshayjain.dev",
+                      href: "https://sites.google.com/view/dreamycrafts56",
                       color: "hover:text-cyan-400",
                       bgColor: "hover:bg-cyan-500/10",
                       borderColor: "hover:border-cyan-400/50",
-                      name: "Portfolio",
+                      name: "Dreamy Crafts",
                     },
                   ].map((social, index) => (
                     <div key={index} className="group relative">

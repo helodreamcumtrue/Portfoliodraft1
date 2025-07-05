@@ -1,51 +1,17 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Oswald, Poppins, JetBrains_Mono } from "next/font/google"
+import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
-import { Analytics } from "@/components/Analytics"
-import { Suspense } from "react"
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-})
-
-const oswald = Oswald({
-  subsets: ["latin"],
-  variable: "--font-oswald",
-  display: "swap",
-})
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-poppins",
-  display: "swap",
-})
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
-  display: "swap",
-})
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Lakshay Jain - Full Stack Developer & Entrepreneur",
+  title: "Lakshay Jain - Computer Science Student & Entrepreneur",
   description:
-    "Bridging code and creativity - A CS student building businesses, designing solutions, and driving sustainable tech innovation.",
-  keywords: [
-    "Lakshay Jain",
-    "Full Stack Developer",
-    "Computer Science",
-    "Entrepreneur",
-    "React",
-    "Next.js",
-    "TypeScript",
-    "Web Development",
-  ],
+    "Motivated Computer Science student with passion for technology and entrepreneurship. Skilled in design, photography, and startup ecosystems.",
+  keywords: ["Lakshay Jain", "Computer Science", "Entrepreneur", "Designer", "Photography", "Thapar Institute"],
   authors: [{ name: "Lakshay Jain" }],
   creator: "Lakshay Jain",
   publisher: "Lakshay Jain",
@@ -59,29 +25,29 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://lakshayjain.dev",
-    title: "Lakshay Jain - Full Stack Developer & Entrepreneur",
+    title: "Lakshay Jain - Computer Science Student & Entrepreneur",
     description:
-      "Bridging code and creativity - A CS student building businesses, designing solutions, and driving sustainable tech innovation.",
+      "Motivated Computer Science student with passion for technology and entrepreneurship. Skilled in design, photography, and startup ecosystems.",
+    url: "https://lakshayjain.dev",
     siteName: "Lakshay Jain Portfolio",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/placeholder.jpg",
         width: 1200,
         height: 630,
-        alt: "Lakshay Jain - Full Stack Developer",
+        alt: "Lakshay Jain Portfolio",
       },
     ],
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lakshay Jain - Full Stack Developer & Entrepreneur",
+    title: "Lakshay Jain - Computer Science Student & Entrepreneur",
     description:
-      "Bridging code and creativity - A CS student building businesses, designing solutions, and driving sustainable tech innovation.",
-    images: ["/og-image.jpg"],
+      "Motivated Computer Science student with passion for technology and entrepreneurship. Skilled in design, photography, and startup ecosystems.",
     creator: "@lakshayjain",
+    images: ["/placeholder.jpg"],
   },
   robots: {
     index: true,
@@ -97,7 +63,7 @@ export const metadata: Metadata = {
   verification: {
     google: "your-google-verification-code",
   },
-  generator: "v0.dev",
+    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -107,23 +73,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-      </head>
-      <body
-        className={`${inter.variable} ${oswald.variable} ${poppins.variable} ${jetbrainsMono.variable} font-sans antialiased`}
-      >
-        <Suspense fallback={null}>
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-            {children}
-            <Toaster />
-            <Analytics />
-          </ThemeProvider>
-        </Suspense>
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          {children}
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   )
