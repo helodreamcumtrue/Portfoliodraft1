@@ -33,11 +33,11 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Lakshay Jain ",
+  title: "Lakshay Jain - Full Stack Developer & Entrepreneur",
   description:
     "Bridging code and creativity - A CS student building businesses, designing solutions, and driving sustainable tech innovation.",
   keywords: [
-    "Alex Chen",
+    "Lakshay Jain",
     "Full Stack Developer",
     "Computer Science",
     "Entrepreneur",
@@ -50,19 +50,19 @@ export const metadata: Metadata = {
   creator: "Lakshay Jain",
   publisher: "Lakshay Jain",
   formatDetection: {
-    email: lakshayjain148@gmail.com,
+    email: false,
     address: false,
-    telephone: +918690140158,
+    telephone: false,
   },
-  metadataBase: new URL(""),
+  metadataBase: new URL("https://lakshayjain.dev"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: " ",
-    title: "Lakshay Jain",
+    url: "https://lakshayjain.dev",
+    title: "Lakshay Jain - Full Stack Developer & Entrepreneur",
     description:
       "Bridging code and creativity - A CS student building businesses, designing solutions, and driving sustainable tech innovation.",
     siteName: "Lakshay Jain Portfolio",
@@ -71,17 +71,17 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Lakshay Jain",
+        alt: "Lakshay Jain - Full Stack Developer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Alex Chen - Full Stack Developer & Entrepreneur",
+    title: "Lakshay Jain - Full Stack Developer & Entrepreneur",
     description:
       "Bridging code and creativity - A CS student building businesses, designing solutions, and driving sustainable tech innovation.",
     images: ["/og-image.jpg"],
-    creator: "@alexchen",
+    creator: "@lakshayjain",
   },
   robots: {
     index: true,
@@ -97,7 +97,7 @@ export const metadata: Metadata = {
   verification: {
     google: "your-google-verification-code",
   },
-    generator: 'v0.dev'
+  generator: "v0.dev",
 }
 
 export default function RootLayout({

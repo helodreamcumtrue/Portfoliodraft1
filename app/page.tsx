@@ -30,8 +30,8 @@ export default function CinematicPortfolio() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isMounted, setIsMounted] = useState(false)
 
-  const name = "Your Name"
-  const subtitle = "Your Title/Description"
+  const name = "LAKSHAY JAIN"
+  const subtitle = "Computer Science Student | Entrepreneur | Full Stack Developer"
 
   const { trackEvent } = useAnalytics()
 
@@ -49,7 +49,7 @@ export default function CinematicPortfolio() {
     }, 150)
 
     return () => clearInterval(timer)
-  }, [])
+  }, [name])
 
   // Parallax scroll effect
   useEffect(() => {
@@ -98,7 +98,7 @@ export default function CinematicPortfolio() {
       const url = window.URL.createObjectURL(blob)
       const a = document.createElement("a")
       a.href = url
-      a.download = "Alex_Chen_Resume.pdf"
+      a.download = "Lakshay_Jain_Resume.pdf"
       document.body.appendChild(a)
       a.click()
       window.URL.revokeObjectURL(url)
@@ -108,7 +108,7 @@ export default function CinematicPortfolio() {
       trackEvent("resume_download_success").catch((error) => {
         console.warn("Download success tracking failed:", error)
       })
-    } catch (error) {
+    } catch (error: any) {
       console.error("Resume download failed:", error)
 
       // Track download failure
@@ -140,7 +140,7 @@ export default function CinematicPortfolio() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="text-2xl font-bold tracking-wider">
-              <span className="text-cyan-400">A</span>C
+              <span className="text-cyan-400">L</span>J
             </div>
 
             {/* Desktop Navigation */}
@@ -240,14 +240,16 @@ export default function CinematicPortfolio() {
               {/* Social Links */}
               <div className="flex justify-center space-x-8">
                 {[
-                  { icon: Linkedin, href: "https://linkedin.com/in/yourusername", color: "hover:text-blue-400" },
-                  { icon: Github, href: "https://github.com/yourusername", color: "hover:text-gray-400" },
-                  { icon: Instagram, href: "https://instagram.com/yourusername", color: "hover:text-pink-400" },
-                  { icon: ExternalLink, href: "https://yourwebsite.com", color: "hover:text-cyan-400" },
+                  { icon: Linkedin, href: "https://linkedin.com/in/lakshayjain", color: "hover:text-blue-400" },
+                  { icon: Github, href: "https://github.com/lakshayjain", color: "hover:text-gray-400" },
+                  { icon: Instagram, href: "https://instagram.com/lakshayjain", color: "hover:text-pink-400" },
+                  { icon: ExternalLink, href: "https://lakshayjain.dev", color: "hover:text-cyan-400" },
                 ].map((social, index) => (
                   <a
                     key={index}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`text-gray-400 ${social.color} transition-all duration-300 transform hover:scale-125`}
                   >
                     <social.icon size={28} />
@@ -279,7 +281,7 @@ export default function CinematicPortfolio() {
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="w-full h-full flex items-center justify-center">
                   <div className="w-64 h-64 bg-gradient-to-br from-gray-700 to-gray-800 rounded-full flex items-center justify-center">
-                    <span className="text-6xl font-bold text-cyan-400">AC</span>
+                    <span className="text-6xl font-bold text-cyan-400">LJ</span>
                   </div>
                 </div>
               </div>
@@ -298,7 +300,7 @@ export default function CinematicPortfolio() {
 
               <p className="text-xl text-gray-300 leading-relaxed mb-8 font-body font-light">
                 I'm a passionate Computer Science student with an entrepreneurial spirit. Currently building innovative
-                solutions through Dreamy Craft while mastering the art of code and design.
+                solutions while mastering the art of code and design.
               </p>
 
               <p className="text-lg text-gray-400 leading-relaxed mb-12 font-light">
@@ -335,30 +337,30 @@ export default function CinematicPortfolio() {
             <div className="space-y-24">
               {[
                 {
-                  title: "FOUNDER & CEO",
-                  company: "Dreamy Craft",
-                  period: "2022 - Present",
+                  title: "FULL STACK DEVELOPER",
+                  company: "Tech Startup",
+                  period: "2023 - Present",
                   description:
-                    "Built and scaled a creative business from ground up, serving 500+ customers with 95% satisfaction rate.",
-                  metrics: ["500+ Customers", "95% Satisfaction", "50+ Products", "2+ Years"],
+                    "Built and scaled web applications using modern technologies, serving thousands of users with high performance.",
+                  metrics: ["React/Next.js", "Node.js", "MongoDB", "AWS"],
                   side: "left",
                 },
                 {
-                  title: "PRODUCT RESEARCHER",
-                  company: "Aarohan Project - Enactus Thapar",
-                  period: "2023 - Present",
+                  title: "COMPUTER SCIENCE STUDENT",
+                  company: "University",
+                  period: "2022 - Present",
                   description:
-                    "Led product research for social impact projects, developing sustainable solutions for rural communities.",
-                  metrics: ["Market Research", "Social Impact", "Team Leadership", "Innovation"],
+                    "Pursuing Computer Science degree with focus on software engineering and entrepreneurship.",
+                  metrics: ["Data Structures", "Algorithms", "Software Engineering", "Machine Learning"],
                   side: "right",
                 },
                 {
-                  title: "TECHNICAL LEAD",
-                  company: "ACM Society & Entrepreneurship Club",
-                  period: "2022 - Present",
+                  title: "FREELANCE DEVELOPER",
+                  company: "Various Clients",
+                  period: "2021 - Present",
                   description:
-                    "Organized technical events, workshops, and hackathons. Built communities and fostered innovation.",
-                  metrics: ["Event Management", "Community Building", "Technical Workshops", "Leadership"],
+                    "Delivered custom web solutions for small businesses and startups, focusing on user experience and performance.",
+                  metrics: ["Web Development", "UI/UX Design", "Client Management", "Project Delivery"],
                   side: "left",
                 },
               ].map((exp, index) => (
@@ -509,7 +511,7 @@ export default function CinematicPortfolio() {
                 {
                   icon: Mail,
                   title: "EMAIL",
-                  content: "your.email@example.com",
+                  content: "lakshayjain148@gmail.com",
                   subtitle: "Drop me a line anytime",
                   color: "text-cyan-400",
                   bgGradient: "from-cyan-500/10 to-blue-500/10",
@@ -519,7 +521,7 @@ export default function CinematicPortfolio() {
                 {
                   icon: Phone,
                   title: "PHONE",
-                  content: "+1 (123) 456-7890",
+                  content: "+91 8690140158",
                   subtitle: "Available Mon-Fri, 9AM-6PM",
                   color: "text-purple-400",
                   bgGradient: "from-purple-500/10 to-pink-500/10",
@@ -529,7 +531,7 @@ export default function CinematicPortfolio() {
                 {
                   icon: MapPin,
                   title: "LOCATION",
-                  content: "Your City, State, Country",
+                  content: "India",
                   subtitle: "Open to remote opportunities",
                   color: "text-emerald-400",
                   bgGradient: "from-emerald-500/10 to-green-500/10",
@@ -607,7 +609,7 @@ export default function CinematicPortfolio() {
                   {[
                     {
                       icon: Linkedin,
-                      href: "https://linkedin.com/in/yourusername",
+                      href: "https://linkedin.com/in/lakshayjain",
                       color: "hover:text-blue-400",
                       bgColor: "hover:bg-blue-500/10",
                       borderColor: "hover:border-blue-400/50",
@@ -615,7 +617,7 @@ export default function CinematicPortfolio() {
                     },
                     {
                       icon: Github,
-                      href: "https://github.com/yourusername",
+                      href: "https://github.com/lakshayjain",
                       color: "hover:text-gray-300",
                       bgColor: "hover:bg-gray-500/10",
                       borderColor: "hover:border-gray-400/50",
@@ -623,7 +625,7 @@ export default function CinematicPortfolio() {
                     },
                     {
                       icon: Instagram,
-                      href: "https://instagram.com/yourusername",
+                      href: "https://instagram.com/lakshayjain",
                       color: "hover:text-pink-400",
                       bgColor: "hover:bg-pink-500/10",
                       borderColor: "hover:border-pink-400/50",
@@ -631,7 +633,7 @@ export default function CinematicPortfolio() {
                     },
                     {
                       icon: ExternalLink,
-                      href: "https://yourwebsite.com",
+                      href: "https://lakshayjain.dev",
                       color: "hover:text-cyan-400",
                       bgColor: "hover:bg-cyan-500/10",
                       borderColor: "hover:border-cyan-400/50",
@@ -641,6 +643,8 @@ export default function CinematicPortfolio() {
                     <div key={index} className="group relative">
                       <a
                         href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className={`relative w-14 h-14 bg-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-xl flex items-center justify-center text-gray-400 ${social.color} ${social.bgColor} ${social.borderColor} transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg`}
                       >
                         <social.icon size={22} />
@@ -668,7 +672,7 @@ export default function CinematicPortfolio() {
       {/* Footer */}
       <footer className="py-8 border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gray-500 tracking-wide">© 2024 ALEX CHEN. CRAFTED WITH PRECISION.</p>
+          <p className="text-gray-500 tracking-wide">© 2024 LAKSHAY JAIN. CRAFTED WITH PRECISION.</p>
         </div>
       </footer>
 
