@@ -19,7 +19,6 @@ import {
 import { Button } from "@/components/ui/button"
 import { ContactForm } from "@/components/ContactForm"
 import { useAnalytics } from "@/hooks/useAnalytics"
-import { resumeAPI } from "@/lib/api"
 
 export default function CinematicPortfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -94,11 +93,18 @@ export default function CinematicPortfolio() {
         console.warn("Download tracking failed:", error)
       })
 
-      const blob = await resumeAPI.downloadResume()
+      // Use the API route to download resume
+      const response = await fetch("/api/resume/download")
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+
+      const blob = await response.blob()
       const url = window.URL.createObjectURL(blob)
       const a = document.createElement("a")
       a.href = url
-      a.download = "Lakshay_Jain_Resume.pdf"
+      a.download = "Lakshay_Jain_Resume.txt"
       document.body.appendChild(a)
       a.click()
       window.URL.revokeObjectURL(url)
@@ -115,6 +121,9 @@ export default function CinematicPortfolio() {
       trackEvent("resume_download_error", { error: error.message }).catch((trackError) => {
         console.warn("Download error tracking failed:", trackError)
       })
+
+      // Show user-friendly error message
+      alert("Resume download failed. Please try again or contact me directly.")
     }
   }
 
