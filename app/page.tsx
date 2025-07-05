@@ -22,6 +22,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { ContactForm } from "@/components/ContactForm"
 import { useAnalytics } from "@/hooks/useAnalytics"
+import Image from "next/image"
 
 export default function CinematicPortfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -107,11 +108,14 @@ export default function CinematicPortfolio() {
       const url = window.URL.createObjectURL(blob)
       const a = document.createElement("a")
       a.href = url
-      a.download = "Lakshay_Jain_Resume.txt"
+      a.download = "Lakshay_Jain_Resume.html"
       document.body.appendChild(a)
       a.click()
       window.URL.revokeObjectURL(url)
       document.body.removeChild(a)
+
+      // Show instruction for PDF conversion
+      alert("Resume downloaded! Open the HTML file in your browser and use 'Print to PDF' to save as PDF.")
 
       // Track successful download
       trackEvent("resume_download_success").catch((error) => {
@@ -295,10 +299,18 @@ export default function CinematicPortfolio() {
             >
               <div className="aspect-square bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg overflow-hidden relative group">
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="w-full h-full flex items-center justify-center">
-                  <div className="w-64 h-64 bg-gradient-to-br from-gray-700 to-gray-800 rounded-full flex items-center justify-center">
-                    <span className="text-6xl font-bold text-cyan-400">LJ</span>
-                  </div>
+
+                {/* Your actual photo */}
+                <div className="w-full h-full relative">
+                  <Image
+                    src="/lakshay-photo.jpg"
+                    alt="Lakshay Jain"
+                    fill
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    priority
+                  />
+                  {/* Overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
                 </div>
               </div>
             </div>
