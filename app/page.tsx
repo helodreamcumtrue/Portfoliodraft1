@@ -12,13 +12,9 @@ import {
   MapPin,
   ChevronDown,
   Code,
-  Palette,
-  Briefcase,
   Users,
   Menu,
   X,
-  Target,
-  Rocket,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ContactForm } from "@/components/ContactForm"
@@ -149,7 +145,7 @@ export default function CinematicPortfolio() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
-              {["About", "Experience", "Projects", "Skills", "Contact"].map((item) => (
+              {["About", "Experience", "Skills", "Contact"].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
@@ -172,7 +168,7 @@ export default function CinematicPortfolio() {
         {isMenuOpen && (
           <div className="md:hidden bg-black/95 backdrop-blur-sm border-t border-gray-800">
             <div className="px-4 py-4 space-y-4">
-              {["About", "Experience", "Projects", "Skills", "Contact"].map((item) => (
+              {["About", "Experience", "Skills", "Contact"].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
@@ -225,10 +221,10 @@ export default function CinematicPortfolio() {
 
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
                 <Button
-                  onClick={() => scrollToSection("projects")}
+                  onClick={() => scrollToSection("about")}
                   className="bg-transparent border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black px-8 py-4 text-lg font-semibold tracking-wide transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/25"
                 >
-                  EXPLORE MY WORK
+                  LEARN MORE ABOUT ME
                 </Button>
 
                 <Button
@@ -401,102 +397,6 @@ export default function CinematicPortfolio() {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" className="py-32 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-5xl md:text-6xl font-black tracking-wider text-center mb-20">PROJECTS</h2>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "DREAMY CRAFT PLATFORM",
-                category: "BUSINESS",
-                description: "Complete e-commerce platform with custom product showcase and order management.",
-                tech: ["React", "Node.js", "MongoDB"],
-                color: "from-purple-500 to-pink-500",
-                icon: Briefcase,
-              },
-              {
-                title: "PORTFOLIO WEBSITE",
-                category: "DEVELOPMENT",
-                description: "Cinematic portfolio with parallax effects and smooth animations.",
-                tech: ["Next.js", "Tailwind", "Framer Motion"],
-                color: "from-blue-500 to-cyan-500",
-                icon: Code,
-              },
-              {
-                title: "PHOTOGRAPHY COLLECTION",
-                category: "DESIGN",
-                description: "Creative photography portfolio showcasing artistic vision and technical skill.",
-                tech: ["Photography", "Editing", "Curation"],
-                color: "from-orange-500 to-red-500",
-                icon: Palette,
-              },
-              {
-                title: "AAROHAN RESEARCH",
-                category: "RESEARCH",
-                description: "Social impact research project for sustainable rural development solutions.",
-                tech: ["Research", "Analysis", "Strategy"],
-                color: "from-green-500 to-emerald-500",
-                icon: Target,
-              },
-              {
-                title: "STARTUP ACCELERATOR",
-                category: "BUSINESS",
-                description: "Mentorship program for early-stage startups in the tech ecosystem.",
-                tech: ["Mentorship", "Strategy", "Growth"],
-                color: "from-yellow-500 to-orange-500",
-                icon: Rocket,
-              },
-              {
-                title: "TECH COMMUNITY",
-                category: "LEADERSHIP",
-                description: "Built and led technical communities with 1000+ active members.",
-                tech: ["Leadership", "Events", "Growth"],
-                color: "from-indigo-500 to-purple-500",
-                icon: Users,
-              },
-            ].map((project, index) => (
-              <div
-                key={index}
-                className="group cursor-pointer"
-                style={{
-                  transform: isMounted ? `translateY(${scrollY * 0.01 * (index + 1)}px)` : "translateY(0px)",
-                }}
-              >
-                <div className="bg-gray-900/30 backdrop-blur-sm border border-gray-800 rounded-lg overflow-hidden hover:border-cyan-400/50 transition-all duration-500 hover:shadow-lg hover:shadow-cyan-400/10 transform hover:-translate-y-4">
-                  {/* Project Image/Icon */}
-                  <div className={`h-48 bg-gradient-to-br ${project.color} flex items-center justify-center relative`}>
-                    <project.icon className="text-white" size={48} />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300" />
-                  </div>
-
-                  {/* Project Content */}
-                  <div className="p-6">
-                    <div className="text-xs text-cyan-400 font-semibold tracking-wide mb-2">{project.category}</div>
-                    <h3 className="text-xl font-bold mb-3 group-hover:text-cyan-400 transition-colors duration-300">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-400 text-sm leading-relaxed mb-4">{project.description}</p>
-
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech, i) => (
-                        <span
-                          key={i}
-                          className="text-xs text-gray-400 bg-gray-800/50 px-2 py-1 rounded-full border border-gray-700"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
