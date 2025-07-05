@@ -610,53 +610,153 @@ export default function CinematicPortfolio() {
                   icon: Mail,
                   title: "EMAIL",
                   content: "alex.chen@email.com",
+                  subtitle: "Drop me a line anytime",
                   color: "text-cyan-400",
+                  bgGradient: "from-cyan-500/10 to-blue-500/10",
+                  borderGradient: "from-cyan-500/30 to-blue-500/30",
+                  hoverGlow: "hover:shadow-cyan-400/20",
                 },
                 {
                   icon: Phone,
                   title: "PHONE",
                   content: "+1 (555) 123-4567",
+                  subtitle: "Available Mon-Fri, 9AM-6PM",
                   color: "text-purple-400",
+                  bgGradient: "from-purple-500/10 to-pink-500/10",
+                  borderGradient: "from-purple-500/30 to-pink-500/30",
+                  hoverGlow: "hover:shadow-purple-400/20",
                 },
                 {
                   icon: MapPin,
                   title: "LOCATION",
                   content: "Patiala, Punjab, India",
-                  color: "text-green-400",
+                  subtitle: "Open to remote opportunities",
+                  color: "text-emerald-400",
+                  bgGradient: "from-emerald-500/10 to-green-500/10",
+                  borderGradient: "from-emerald-500/30 to-green-500/30",
+                  hoverGlow: "hover:shadow-emerald-400/20",
                 },
               ].map((contact, index) => (
                 <div
                   key={index}
-                  className="flex items-center p-6 bg-gray-900/30 backdrop-blur-sm border border-gray-800 rounded-lg hover:border-cyan-400/50 transition-all duration-300 group"
+                  className={`relative group cursor-pointer overflow-hidden rounded-xl bg-gradient-to-br ${contact.bgGradient} backdrop-blur-sm border border-gray-800/50 hover:border-transparent transition-all duration-500 ${contact.hoverGlow} hover:shadow-2xl transform hover:-translate-y-2`}
                 >
-                  <contact.icon
-                    className={`${contact.color} mr-6 group-hover:scale-110 transition-transform duration-300`}
-                    size={32}
+                  {/* Gradient Border */}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-r ${contact.borderGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl`}
                   />
-                  <div>
-                    <h4 className="text-white font-bold text-lg tracking-wide">{contact.title}</h4>
-                    <p className="text-gray-400">{contact.content}</p>
+                  <div className="absolute inset-[1px] bg-gray-900/80 rounded-xl" />
+
+                  {/* Content */}
+                  <div className="relative p-8 flex items-center space-x-6">
+                    {/* Icon Container */}
+                    <div
+                      className={`relative flex-shrink-0 w-16 h-16 rounded-xl bg-gradient-to-br ${contact.bgGradient} border border-gray-700/50 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      <contact.icon
+                        className={`${contact.color} group-hover:scale-110 transition-all duration-300`}
+                        size={28}
+                      />
+                      {/* Glow effect */}
+                      <div
+                        className={`absolute inset-0 rounded-xl bg-gradient-to-br ${contact.bgGradient} opacity-0 group-hover:opacity-50 blur-xl transition-opacity duration-500`}
+                      />
+                    </div>
+
+                    {/* Text Content */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center space-x-3 mb-2">
+                        <h4 className="text-white font-bold text-lg tracking-wide group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 group-hover:bg-clip-text transition-all duration-300">
+                          {contact.title}
+                        </h4>
+                        <div
+                          className={`w-2 h-2 rounded-full ${contact.color} opacity-60 group-hover:opacity-100 transition-opacity duration-300`}
+                        />
+                      </div>
+                      <p
+                        className={`${contact.color} font-semibold text-base mb-1 group-hover:text-white transition-colors duration-300`}
+                      >
+                        {contact.content}
+                      </p>
+                      <p className="text-gray-500 text-sm group-hover:text-gray-400 transition-colors duration-300">
+                        {contact.subtitle}
+                      </p>
+                    </div>
+
+                    {/* Arrow Icon */}
+                    <div className="flex-shrink-0 opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                      <ExternalLink className={`${contact.color} w-5 h-5`} />
+                    </div>
+                  </div>
+
+                  {/* Animated Background Pattern */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1000" />
                   </div>
                 </div>
               ))}
 
               {/* Social Links */}
-              <div className="pt-8">
-                <h4 className="text-white font-bold text-lg tracking-wide mb-6">CONNECT WITH ME</h4>
-                <div className="flex space-x-6">
+              <div className="pt-12">
+                <div className="text-center mb-8">
+                  <h4 className="text-white font-bold text-xl tracking-wide mb-2">CONNECT WITH ME</h4>
+                  <div className="w-24 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto" />
+                </div>
+
+                <div className="flex justify-center space-x-6">
                   {[
-                    { icon: Linkedin, href: "#", color: "hover:text-blue-400" },
-                    { icon: Github, href: "#", color: "hover:text-gray-400" },
-                    { icon: Instagram, href: "#", color: "hover:text-pink-400" },
-                    { icon: ExternalLink, href: "#", color: "hover:text-cyan-400" },
+                    {
+                      icon: Linkedin,
+                      href: "#",
+                      color: "hover:text-blue-400",
+                      bgColor: "hover:bg-blue-500/10",
+                      borderColor: "hover:border-blue-400/50",
+                      name: "LinkedIn",
+                    },
+                    {
+                      icon: Github,
+                      href: "#",
+                      color: "hover:text-gray-300",
+                      bgColor: "hover:bg-gray-500/10",
+                      borderColor: "hover:border-gray-400/50",
+                      name: "GitHub",
+                    },
+                    {
+                      icon: Instagram,
+                      href: "#",
+                      color: "hover:text-pink-400",
+                      bgColor: "hover:bg-pink-500/10",
+                      borderColor: "hover:border-pink-400/50",
+                      name: "Instagram",
+                    },
+                    {
+                      icon: ExternalLink,
+                      href: "#",
+                      color: "hover:text-cyan-400",
+                      bgColor: "hover:bg-cyan-500/10",
+                      borderColor: "hover:border-cyan-400/50",
+                      name: "Portfolio",
+                    },
                   ].map((social, index) => (
-                    <a
-                      key={index}
-                      href={social.href}
-                      className={`w-12 h-12 bg-gray-900/50 border border-gray-700 rounded-lg flex items-center justify-center text-gray-400 ${social.color} transition-all duration-300 transform hover:scale-110 hover:border-cyan-400/50`}
-                    >
-                      <social.icon size={20} />
-                    </a>
+                    <div key={index} className="group relative">
+                      <a
+                        href={social.href}
+                        className={`relative w-14 h-14 bg-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-xl flex items-center justify-center text-gray-400 ${social.color} ${social.bgColor} ${social.borderColor} transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg`}
+                      >
+                        <social.icon size={22} />
+
+                        {/* Glow effect */}
+                        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </a>
+
+                      {/* Tooltip */}
+                      <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                        <div className="bg-gray-900 text-white text-xs px-3 py-1 rounded-lg border border-gray-700 whitespace-nowrap">
+                          {social.name}
+                          <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900" />
+                        </div>
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
