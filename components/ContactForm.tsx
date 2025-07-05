@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -31,19 +30,22 @@ export function ContactForm() {
       const response = await contactAPI.submitForm(formData)
 
       setSubmitStatus("success")
-      setStatusMessage(response.message)
+      setStatusMessage(response.message || "Message sent successfully!")
 
       // Reset form
       setFormData({ name: "", email: "", subject: "", message: "" })
 
       // Track successful submission
-      trackEvent("contact_form_submit", { success: true })
-    } catch (error) {
+      trackEvent("contact_form_submit", { success: true }).catch(console.warn)
+    } catch (error: any) {
       setSubmitStatus("error")
-      setStatusMessage("Failed to send message. Please try again.")
+      setStatusMessage(error?.message || "Failed to send message. Please try again.")
 
       // Track failed submission
-      trackEvent("contact_form_submit", { success: false, error: error.message })
+      trackEvent("contact_form_submit", {
+        success: false,
+        error: error?.message || "Unknown error",
+      }).catch(console.warn)
     } finally {
       setIsSubmitting(false)
     }

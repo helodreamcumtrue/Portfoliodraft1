@@ -2,7 +2,7 @@ import { type NextRequest, NextResponse } from "next/server"
 import nodemailer from "nodemailer"
 
 // Email configuration
-const transporter = nodemailer.createTransporter({
+const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: Number.parseInt(process.env.SMTP_PORT || "587"),
   secure: false,
@@ -14,6 +14,41 @@ const transporter = nodemailer.createTransporter({
 
 export async function POST(request: NextRequest) {
   try {
+    // Check if email configuration is available
+    if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+      console.warn("Email configuration missing, contact form will log only")
+
+      const { name, email, subject, message } = await request.json()
+
+      // Validation
+      if (!name || !email || !subject || !message) {
+        return NextResponse.json({ error: "All fields are required" }, { status: 400 })
+      }
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (!emailRegex.test(email)) {
+        return NextResponse.json({ error: "Invalid email address" }, { status: 400 })
+      }
+
+      // Log the contact for development/testing
+      console.log(`Contact form submission:`, {
+        name,
+        email,
+        subject,
+        message,
+        timestamp: new Date().toISOString(),
+      })
+
+      return NextResponse.json(
+        {
+          success: true,
+          message: "Message received! I'll get back to you soon.",
+        },
+        { status: 200 },
+      )
+    }
+
     const { name, email, subject, message } = await request.json()
 
     // Validation
