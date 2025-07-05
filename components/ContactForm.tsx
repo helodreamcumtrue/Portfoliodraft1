@@ -1,47 +1,59 @@
 "use client"
 
-import type React from "react"
 import { useState } from "react"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import * as z from "zod"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Send, CheckCircle, AlertCircle } from "lucide-react"
+import { Label } from "@/components/ui/label"
+import { Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react"
+import { toast } from "sonner"
 import { contactAPI } from "@/lib/api"
 import { useAnalytics } from "@/hooks/useAnalytics"
 
+const contactSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  subject: z.string().min(5, "Subject must be at least 5 characters"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+})
+
+type ContactFormData = z.infer<typeof contactSchema>
+
 export function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
-  const [statusMessage, setStatusMessage] = useState("")
   const { trackEvent } = useAnalytics()
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+  })
+
+  const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true)
-    setSubmitStatus("idle")
 
     try {
-      const response = await contactAPI.submitForm(formData)
+      const response = await contactAPI.submitForm(data)
 
-      setSubmitStatus("success")
-      setStatusMessage(response.message || "Message sent successfully!")
+      toast.success("Message sent successfully!", {
+        description: "I'll get back to you as soon as possible.",
+        icon: <CheckCircle className="h-4 w-4" />,
+      })
 
-      // Reset form
-      setFormData({ name: "", email: "", subject: "", message: "" })
-
-      // Track successful submission
+      reset()
       trackEvent("contact_form_submit", { success: true }).catch(console.warn)
     } catch (error: any) {
-      setSubmitStatus("error")
-      setStatusMessage(error?.message || "Failed to send message. Please try again.")
+      toast.error("Failed to send message", {
+        description: error?.message || "Please try again later.",
+        icon: <AlertCircle className="h-4 w-4" />,
+      })
 
-      // Track failed submission
       trackEvent("contact_form_submit", {
         success: false,
         error: error?.message || "Unknown error",
@@ -51,71 +63,63 @@ export function ContactForm() {
     }
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }))
-  }
-
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div className="grid md:grid-cols-2 gap-6">
-        <Input
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="YOUR NAME"
-          required
-          className="bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-cyan-400 focus:ring-cyan-400/25 h-12 text-lg"
-        />
-        <Input
-          name="email"
-          type="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="YOUR EMAIL"
-          required
-          className="bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-cyan-400 focus:ring-cyan-400/25 h-12 text-lg"
-        />
+        <div className="space-y-2">
+          <Label htmlFor="name" className="text-white font-medium">
+            Name
+          </Label>
+          <Input
+            id="name"
+            {...register("name")}
+            placeholder="Your Name"
+            className="bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-cyan-400 focus:ring-cyan-400/25 h-12 text-lg"
+          />
+          {errors.name && <p className="text-red-400 text-sm">{errors.name.message}</p>}
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="email" className="text-white font-medium">
+            Email
+          </Label>
+          <Input
+            id="email"
+            type="email"
+            {...register("email")}
+            placeholder="your.email@example.com"
+            className="bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-cyan-400 focus:ring-cyan-400/25 h-12 text-lg"
+          />
+          {errors.email && <p className="text-red-400 text-sm">{errors.email.message}</p>}
+        </div>
       </div>
 
-      <Input
-        name="subject"
-        value={formData.subject}
-        onChange={handleChange}
-        placeholder="SUBJECT"
-        required
-        className="bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-cyan-400 focus:ring-cyan-400/25 h-12 text-lg"
-      />
+      <div className="space-y-2">
+        <Label htmlFor="subject" className="text-white font-medium">
+          Subject
+        </Label>
+        <Input
+          id="subject"
+          {...register("subject")}
+          placeholder="What's this about?"
+          className="bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-cyan-400 focus:ring-cyan-400/25 h-12 text-lg"
+        />
+        {errors.subject && <p className="text-red-400 text-sm">{errors.subject.message}</p>}
+      </div>
 
-      <Textarea
-        name="message"
-        value={formData.message}
-        onChange={handleChange}
-        placeholder="YOUR MESSAGE"
-        rows={6}
-        required
-        className="bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-cyan-400 focus:ring-cyan-400/25 resize-none text-lg"
-      />
-
-      {/* Status Message */}
-      {submitStatus !== "idle" && (
-        <div
-          className={`flex items-center p-4 rounded-lg ${
-            submitStatus === "success"
-              ? "bg-green-900/20 border border-green-500/30 text-green-400"
-              : "bg-red-900/20 border border-red-500/30 text-red-400"
-          }`}
-        >
-          {submitStatus === "success" ? (
-            <CheckCircle className="mr-3" size={20} />
-          ) : (
-            <AlertCircle className="mr-3" size={20} />
-          )}
-          <span>{statusMessage}</span>
-        </div>
-      )}
+      <div className="space-y-2">
+        <Label htmlFor="message" className="text-white font-medium">
+          Message
+        </Label>
+        <Textarea
+          id="message"
+          {...register("message")}
+          placeholder="Tell me about your project or just say hello!"
+          rows={6}
+          className="bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-cyan-400 focus:ring-cyan-400/25 resize-none text-lg"
+        />
+        {errors.message && <p className="text-red-400 text-sm">{errors.message.message}</p>}
+      </div>
 
       <Button
         type="submit"
@@ -124,7 +128,7 @@ export function ContactForm() {
       >
         {isSubmitting ? (
           <>
-            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2" />
+            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
             SENDING...
           </>
         ) : (
