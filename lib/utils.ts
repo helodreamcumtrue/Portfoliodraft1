@@ -1,6 +1,10 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+
 // Utility functions for safe API calls
 export function isBrowser(): boolean {
   return typeof window !== "undefined"
@@ -56,7 +60,4 @@ export function throttle<T extends (...args: any[]) => any>(func: T, limit: numb
       setTimeout(() => (inThrottle = false), limit)
     }
   }
-}
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
 }
