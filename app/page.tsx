@@ -30,8 +30,8 @@ export default function CinematicPortfolio() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isMounted, setIsMounted] = useState(false)
 
-  const name = "ALEX CHEN"
-  const subtitle = "Computer Science Student | Entrepreneur | Designer"
+  const name = "Your Name"
+  const subtitle = "Your Title/Description"
 
   const { trackEvent } = useAnalytics()
 
@@ -240,10 +240,10 @@ export default function CinematicPortfolio() {
               {/* Social Links */}
               <div className="flex justify-center space-x-8">
                 {[
-                  { icon: Linkedin, href: "#", color: "hover:text-blue-400" },
-                  { icon: Github, href: "#", color: "hover:text-gray-400" },
-                  { icon: Instagram, href: "#", color: "hover:text-pink-400" },
-                  { icon: ExternalLink, href: "#", color: "hover:text-cyan-400" },
+                  { icon: Linkedin, href: "https://linkedin.com/in/yourusername", color: "hover:text-blue-400" },
+                  { icon: Github, href: "https://github.com/yourusername", color: "hover:text-gray-400" },
+                  { icon: Instagram, href: "https://instagram.com/yourusername", color: "hover:text-pink-400" },
+                  { icon: ExternalLink, href: "https://yourwebsite.com", color: "hover:text-cyan-400" },
                 ].map((social, index) => (
                   <a
                     key={index}
@@ -509,7 +509,7 @@ export default function CinematicPortfolio() {
                 {
                   icon: Mail,
                   title: "EMAIL",
-                  content: "alex.chen@email.com",
+                  content: "your.email@example.com",
                   subtitle: "Drop me a line anytime",
                   color: "text-cyan-400",
                   bgGradient: "from-cyan-500/10 to-blue-500/10",
@@ -519,7 +519,7 @@ export default function CinematicPortfolio() {
                 {
                   icon: Phone,
                   title: "PHONE",
-                  content: "+1 (555) 123-4567",
+                  content: "+1 (123) 456-7890",
                   subtitle: "Available Mon-Fri, 9AM-6PM",
                   color: "text-purple-400",
                   bgGradient: "from-purple-500/10 to-pink-500/10",
@@ -529,7 +529,7 @@ export default function CinematicPortfolio() {
                 {
                   icon: MapPin,
                   title: "LOCATION",
-                  content: "Patiala, Punjab, India",
+                  content: "Your City, State, Country",
                   subtitle: "Open to remote opportunities",
                   color: "text-emerald-400",
                   bgGradient: "from-emerald-500/10 to-green-500/10",
@@ -607,7 +607,7 @@ export default function CinematicPortfolio() {
                   {[
                     {
                       icon: Linkedin,
-                      href: "#",
+                      href: "https://linkedin.com/in/yourusername",
                       color: "hover:text-blue-400",
                       bgColor: "hover:bg-blue-500/10",
                       borderColor: "hover:border-blue-400/50",
@@ -615,7 +615,7 @@ export default function CinematicPortfolio() {
                     },
                     {
                       icon: Github,
-                      href: "#",
+                      href: "https://github.com/yourusername",
                       color: "hover:text-gray-300",
                       bgColor: "hover:bg-gray-500/10",
                       borderColor: "hover:border-gray-400/50",
@@ -623,7 +623,7 @@ export default function CinematicPortfolio() {
                     },
                     {
                       icon: Instagram,
-                      href: "#",
+                      href: "https://instagram.com/yourusername",
                       color: "hover:text-pink-400",
                       bgColor: "hover:bg-pink-500/10",
                       borderColor: "hover:border-pink-400/50",
@@ -631,7 +631,7 @@ export default function CinematicPortfolio() {
                     },
                     {
                       icon: ExternalLink,
-                      href: "#",
+                      href: "https://yourwebsite.com",
                       color: "hover:text-cyan-400",
                       bgColor: "hover:bg-cyan-500/10",
                       borderColor: "hover:border-cyan-400/50",
