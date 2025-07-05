@@ -214,7 +214,7 @@ export default function CinematicPortfolio() {
             transform: isMounted ? `translateY(${scrollY * 0.5}px)` : "translateY(0px)",
           }}
         >
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-wider mb-6 leading-none">
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-display tracking-wider mb-6 leading-none">
             {typedText}
             {!isTypingComplete && <span className="animate-pulse text-cyan-400">|</span>}
           </h1>
@@ -295,12 +295,12 @@ export default function CinematicPortfolio() {
                 transform: isMounted ? `translateY(${scrollY * 0.05}px)` : "translateY(0px)",
               }}
             >
-              <h2 className="text-5xl md:text-6xl font-black tracking-wider mb-8 leading-tight">
+              <h2 className="text-5xl md:text-6xl font-display tracking-wider mb-8 leading-tight">
                 ABOUT
                 <span className="block text-cyan-400">ME</span>
               </h2>
 
-              <p className="text-xl text-gray-300 leading-relaxed mb-8 font-light">
+              <p className="text-xl text-gray-300 leading-relaxed mb-8 font-body font-light">
                 I'm a passionate Computer Science student with an entrepreneurial spirit. Currently building innovative
                 solutions through Dreamy Craft while mastering the art of code and design.
               </p>
@@ -675,9 +675,14 @@ export default function CinematicPortfolio() {
       <style jsx>{`
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
         
-        .font-black {
+        .font-display {
           font-family: 'Oswald', sans-serif;
           font-weight: 700;
+        }
+
+        .font-body {
+          font-family: 'Oswald', sans-serif;
+          font-weight: 400;
         }
         
         .matrix-particle {

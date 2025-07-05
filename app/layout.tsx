@@ -11,12 +11,14 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  preload: true,
 })
 
 const oswald = Oswald({
   subsets: ["latin"],
   variable: "--font-oswald",
   display: "swap",
+  preload: true,
 })
 
 const poppins = Poppins({
@@ -24,12 +26,14 @@ const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-poppins",
   display: "swap",
+  preload: true,
 })
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
   display: "swap",
+  preload: true,
 })
 
 export const metadata: Metadata = {
