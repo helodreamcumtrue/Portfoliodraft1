@@ -33,9 +33,9 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Alex Chen - Full Stack Developer & Entrepreneur",
+  title: "Lakshay Jain ",
   description:
-    "Computer Science student, entrepreneur, and full-stack developer specializing in modern web technologies. Building innovative solutions through Dreamy Craft.",
+    "Bridging code and creativity - A CS student building businesses, designing solutions, and driving sustainable tech innovation.",
   keywords: [
     "Alex Chen",
     "Full Stack Developer",
@@ -46,32 +46,32 @@ export const metadata: Metadata = {
     "TypeScript",
     "Web Development",
   ],
-  authors: [{ name: "Alex Chen" }],
-  creator: "Alex Chen",
-  publisher: "Alex Chen",
+  authors: [{ name: "Lakshay Jain" }],
+  creator: "Lakshay Jain",
+  publisher: "Lakshay Jain",
   formatDetection: {
-    email: false,
+    email: lakshayjain148@gmail.com,
     address: false,
-    telephone: false,
+    telephone: +918690140158,
   },
-  metadataBase: new URL("https://alexchen.dev"),
+  metadataBase: new URL(""),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://alexchen.dev",
-    title: "Alex Chen - Full Stack Developer & Entrepreneur",
+    url: " ",
+    title: "Lakshay Jain",
     description:
-      "Computer Science student, entrepreneur, and full-stack developer specializing in modern web technologies.",
-    siteName: "Alex Chen Portfolio",
+      "Bridging code and creativity - A CS student building businesses, designing solutions, and driving sustainable tech innovation.",
+    siteName: "Lakshay Jain Portfolio",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Alex Chen - Full Stack Developer",
+        alt: "Lakshay Jain",
       },
     ],
   },
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Alex Chen - Full Stack Developer & Entrepreneur",
     description:
-      "Computer Science student, entrepreneur, and full-stack developer specializing in modern web technologies.",
+      "Bridging code and creativity - A CS student building businesses, designing solutions, and driving sustainable tech innovation.",
     images: ["/og-image.jpg"],
     creator: "@alexchen",
   },
