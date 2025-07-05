@@ -14,9 +14,9 @@ export function Analytics() {
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("config", process.env.NEXT_PUBLIC_GA_ID || "", {
-        page_path: pathname + searchParams.toString(),
+    if (typeof window !== "undefined" && window.gtag && process.env.NEXT_PUBLIC_GA_ID) {
+      window.gtag("config", process.env.NEXT_PUBLIC_GA_ID, {
+        page_path: pathname + (searchParams ? searchParams.toString() : ""),
       })
     }
   }, [pathname, searchParams])

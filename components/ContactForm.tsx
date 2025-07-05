@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react"
+import { Send, Loader2 } from "lucide-react"
 import { toast } from "sonner"
 import { contactAPI } from "@/lib/api"
 import { useAnalytics } from "@/hooks/useAnalytics"
@@ -43,7 +43,6 @@ export function ContactForm() {
 
       toast.success("Message sent successfully!", {
         description: "I'll get back to you as soon as possible.",
-        icon: <CheckCircle className="h-4 w-4" />,
       })
 
       reset()
@@ -51,7 +50,6 @@ export function ContactForm() {
     } catch (error: any) {
       toast.error("Failed to send message", {
         description: error?.message || "Please try again later.",
-        icon: <AlertCircle className="h-4 w-4" />,
       })
 
       trackEvent("contact_form_submit", {
